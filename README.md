@@ -22,8 +22,11 @@ src/test/java/tests/AndroidSelenideLastVersionAppWikiTests.java
 ```
 ![image](images/video-041b1ef2b2357cb878f32070e292dc5030fec752.gif)
 
-## 3) Examples of builds and runs in the browserstack:
-![image](images/BS_run_1.png)
+## 3) Jenkins:
+##### https://jenkins.autotests.cloud/job/11-KDS_AT-browserstack_1/
+
+## 4) Allure:
+##### https://jenkins.autotests.cloud/job/11-KDS_AT-browserstack_1/1/allure/#suites/8bd4a69c5ecfcbee911d1097eade91f6/a8802519f893dd02/
 
 
 ## Common links&notes:
@@ -46,5 +49,7 @@ Step3
 Configure test script
 
 ```
+Examples of builds and runs in the browserstack:
+![image](images/BS_run_1.png)
 
 
