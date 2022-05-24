@@ -1,6 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
+import config.Credentials;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -12,7 +13,9 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
 
     public static URL getBrowserstackUrl() {
         try {
-            return new URL("http://hub.browserstack.com/wd/hub");
+        //    return new URL("http://hub.browserstack.com/wd/hub");
+            // transfer URL via owner parameters
+            return new URL(Credentials.config.url());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -22,15 +25,19 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
     public WebDriver createDriver(DesiredCapabilities caps) {
 
         // Set your access credentials
-        caps.setCapability("browserstack.user", "dmitrykir_ruSiVY");
-        caps.setCapability("browserstack.key", "qd7vwBPZgU98h5mcgpBh");
+//        caps.setCapability("browserstack.user", "dmitrykir_ruSiVY");
+//        caps.setCapability("browserstack.key", "qd7vwBPZgU98h5mcgpBh");
+        // credentials  via owner parameters
+        caps.setCapability("browserstack.user", Credentials.config.user());
+        caps.setCapability("browserstack.key", Credentials.config.key());
 
         // Set URL of the application under test
         // default old wiki app url from browserstack
         //caps.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
         // url generated for uploaded last version from https://github.com/wikimedia/apps-android-wikipedia/releases
-        caps.setCapability("app", "bs://05f4b2c89093dc351fd6c38eacc5c0d077a1c372");
-
+        //caps.setCapability("app", "bs://05f4b2c89093dc351fd6c38eacc5c0d077a1c372");
+        // url via owner parameters
+        caps.setCapability("app", Credentials.config.app());
         // Specify device and os_version for testing
         caps.setCapability("device", "Google Pixel 3");
         caps.setCapability("os_version", "9.0");
